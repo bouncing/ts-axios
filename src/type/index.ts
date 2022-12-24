@@ -1,7 +1,7 @@
 /*
  * @Author: 小神仙他爹老神经
  * @Date: 2022-11-27 14:27:33
- * @LastEditTime: 2022-11-27 16:52:36
+ * @LastEditTime: 2022-12-24 12:32:06
  * @Description:
  *
  * Copyright (c) 2022 by 课书壬盘 kebook.net, All Rights Reserved.
@@ -18,5 +18,6 @@ export interface AxiosRequestConfig {
   url: string
   method?: Method
   data?: any
-  params?:any
+  params?: any
+  headers?: any
 }
