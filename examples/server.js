@@ -1,7 +1,7 @@
 /*
  * @Author: 小神仙他爹老神经
  * @Date: 2022-11-27 20:11:41
- * @LastEditTime: 2022-12-23 22:57:12
+ * @LastEditTime: 2022-12-24 09:39:15
  * @Description:
  *
  * Copyright (c) 2022 by 课书壬盘 kebook.net, All Rights Reserved.
@@ -43,6 +43,23 @@ router.get('/simple/get', function(req, res) {
 
 router.get('/base/get', function(req, res) {
   res.json(req.query)
+})
+
+router.post('/base/post', function(req, res) {
+  res.json(req.body)
+})
+
+router.post('/base/buffer', function(req, res) {
+  let msg = []
+  req.on('data', (chunk) => {
+    if (chunk) {
+      msg.push(chunk)
+    }
+  })
+  req.on('end', () => {
+    let buf = Buffer.concat(msg)
+    res.json(buf.toJSON())
+  })
 })
 
 app.use(router)

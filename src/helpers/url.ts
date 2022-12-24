@@ -1,11 +1,11 @@
 /*
  * @Date: 2022-11-27 21:51:06
- * @LastEditTime: 2022-12-23 22:38:16
+ * @LastEditTime: 2022-12-24 09:26:05
  * @Description:
  *
  * Copyright (c) 2022 by 课书壬盘 kebook.net, All Rights Reserved.
  */
-import { isDate, isObject } from './util'
+import { isDate, isPlainObject } from './util'
 
 function encode(val:string) {
   return encodeURIComponent(val)
@@ -41,7 +41,7 @@ export function buildURL(url:string,params?:any):string {
     values.forEach((val) => {
       if (isDate(val)) {
         val = val.toISOString()
-      } else if (isObject(val)) {
+      } else if (isPlainObject(val)) {
         val = JSON.stringify(val)
       }
       parts.push(`${encode(key)}=${encode(val)}`)
