@@ -1,20 +1,20 @@
 /*
  * @Author: 小神仙他爹老神经
  * @Date: 2022-11-27 14:24:26
- * @LastEditTime: 2022-12-24 12:38:02
+ * @LastEditTime: 2022-12-24 17:21:09
  * @Description: axios 入口文件
  *
  * Copyright (c) 2022 by 课书壬盘 kebook.net, All Rights Reserved.
  */
-import {AxiosRequestConfig} from './type'
+import {AxiosRequestConfig,AxiosPromise} from './type'
 import xhr from './xhr';
 import { buildURL } from './helpers/url';
 import { transformRequest } from './helpers/data';
 import { processHeaders } from './helpers/headers';
 
-function axios(config: AxiosRequestConfig): void {
+function axios(config: AxiosRequestConfig): AxiosPromise {
   processConfig(config)
-  xhr(config)
+  return xhr(config)
 }
 
 function processConfig(config: AxiosRequestConfig): void{
